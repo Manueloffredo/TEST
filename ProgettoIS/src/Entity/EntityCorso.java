@@ -8,7 +8,7 @@ public class EntityCorso {
 		private int Num_Cfu;
 		private String Tipologia;
 		private List <EntityEsame> Lista_Esami_Propedeutici;
-		
+		alex gay
 
 
 		    // Constructor
