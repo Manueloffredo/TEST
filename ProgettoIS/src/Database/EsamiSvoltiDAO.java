@@ -50,4 +50,8 @@ public class EsamiSvoltiDAO {
 		return esamiS;
 		
 	}
+	
+	public static boolean updateEsamiSvolti() {
+		
+	}
 }
