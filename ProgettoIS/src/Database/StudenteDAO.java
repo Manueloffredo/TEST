@@ -2,60 +2,50 @@ package Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Entity.EntityStudente;
-import database.DBManager;
-import entity.CartaCredito;
-import entity.Cliente;
+
 import exception.DAOException;
 import exception.DBConnectionException;
 
 public class StudenteDAO {
 	
-	public static EntityStudente readStudente(String username, String password) {
+	public static EntityStudente readStudente(String username, String password) throws DAOException, DBConnectionException{
 		
-	}
-}
-
-/*
-	public static Cliente createCliente(String username, String password, String numeroTelefono, CartaCredito cartaCredito) throws DBConnectionException, DAOException{
-		
-		String query = "INSERT INTO Clienti VALUES (?,?,?,?);";
-		Cliente cliente = null;
+		String query = "SELECT Username, Password FROM Studenti WHERE Username = ? AND Password=?"; 
+		EntityStudente studente = null;
 		
 		try {
-
-			Connection connection = DBManager.getConnection();
-
+			
+			Connection conn = DBManager.getConnection();
+			
 			try {
 				
-				PreparedStatement statement = connection.prepareStatement(query);
+				PreparedStatement statement = conn.prepareStatement(query);
 				statement.setString(1, username);
 				statement.setString(2, password);
-				statement.setString(3, numeroTelefono);
-				statement.setString(4, cartaCredito.name()); 
-				
-				statement.executeUpdate();
-				
-				cliente = new Cliente(username, password, numeroTelefono, cartaCredito);
-
+				ResultSet result = statement.executeQuery();			
+			
+				if(result.next()) {
+					System.out.println("Accesso Eseguito");
+				}
 			} catch (SQLException e) {
 
-				throw new DAOException("Creazione cliente non riuscita");
+				throw new DAOException("Accesso non eseguito");
 
 			} finally {
 
 				DBManager.closeConnection();
 			}
-
 		} catch (SQLException e) {
 
 			throw new DBConnectionException("Connessione al Database non riuscita");
 
 		}
+		return null;
 		
-		return cliente;
-					
 	}
-*/
+}
+
