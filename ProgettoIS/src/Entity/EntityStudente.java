@@ -26,7 +26,7 @@ public class EntityStudente {
 	    	this.MediaAritmetica=MediaAritmetica;
 	
 	    }
-	    	// Getters
+	
 	        public String getUsername() {
 	            return Username;
 	        }
@@ -59,7 +59,7 @@ public class EntityStudente {
 	            return MediaAritmetica;
 	        }
 
-	        // Setters
+	       
 	        public void setUsername(String Username) {
 	            this.Username = Username;
 	        }
