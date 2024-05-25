@@ -54,7 +54,8 @@ public class EsamiSvoltiDAO {
 	public static boolean updateEsamiSvolti(String username, String codiceEsame, List<String> esamiS) throws DAOException, DBConnectionException {
 		
 		String query = "SELECT id_corso FROM esami_svolti WHERE usernameS = ? AND id_corsoP = ?"; 
-	
+		String query1 = "SELECT * FROM esami_svolti where id_studente = ? AND idCorso = ?"; 
+		
 		try {
 			
 			Connection conn = DBManager.getConnection();
@@ -68,7 +69,14 @@ public class EsamiSvoltiDAO {
 				
 				if(result.next()) {
 					for(String Esame : esamiS) {
-						
+
+						PreparedStatement stat = conn.prepareStatement(query1);
+						stat.setString(1, username);
+						stat.setString(2, Esame);
+						ResultSet res = statement.executeQuery();
+						if(!res.next()) {
+							return false;
+						}
 					}
 				}
 				
@@ -86,7 +94,7 @@ public class EsamiSvoltiDAO {
 			throw new DBConnectionException("Connessione al Database non riuscita");
 
 		}
-		return false;
+		return true;
 		
 	}
 }
