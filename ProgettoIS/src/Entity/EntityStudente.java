@@ -11,7 +11,7 @@ public class EntityStudente {
 	    private List<EntityEsame> Lista_Esami_Svolti; //????????????????????????????
 	    private Double MediaPonderata;
 	    private Double MediaAritmetica;
-			
+		private int x; 
 	    public EntityStudente(String Username,String Password,int Pin,String Nome, String Cognome,
 	    					List<EntityEsame> Lista_Esami_Svolti,Double MediaPonderata, Double MediaAritmetica) 
 	    
