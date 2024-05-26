@@ -69,7 +69,7 @@ public class EsamiSvoltiDAO {
 				
 				if(result.next()) {
 					for(String Esame : esamiS) {								//utilizzo Esame per iterare la lista di tutti
-																				//gli esami propedeutici contenuti in esamiS
+																				//gli esami propedeutici contenuti in esamiS.
 						PreparedStatement stat = conn.prepareStatement(query1);
 						stat.setString(1, username);
 						stat.setString(2, Esame);
