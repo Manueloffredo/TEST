@@ -89,7 +89,6 @@ public class EsamiSvoltiDAO {
 				stat2.setString(1, username);
 				stat2.setInt(2, codiceEsame);
 				ResultSet res2 = stat2.executeQuery();
-				return true; 
 			  }
 			}catch(SQLException e) {
 				
@@ -105,7 +104,7 @@ public class EsamiSvoltiDAO {
 			throw new DBConnectionException("Connessione al Database non riuscita");
 
 		}
-	
+		return true; 
 		
 	}
 }
