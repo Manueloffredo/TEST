@@ -14,7 +14,7 @@ public class StudenteDAO {
 	
 	public static EntityStudente readStudente(String username, String password) throws DAOException, DBConnectionException{
 		
-		String query = "SELECT Username, Password FROM Studenti WHERE Username = ? AND Password=?"; 
+		String query = "SELECT Username, Password FROM Studenti WHERE Username = ? AND Password=?"; //login
 		EntityStudente studente = null;
 		
 		try {
