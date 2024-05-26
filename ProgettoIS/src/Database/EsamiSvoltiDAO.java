@@ -51,8 +51,8 @@ public class EsamiSvoltiDAO {
 		
 	}
 	
-	public static boolean updateEsamiSvolti(String username, String codiceEsame
-											, List<String> esamiS) throws DAOException, DBConnectionException {
+	public static boolean updateEsamiSvolti(String username, int codiceEsame
+											, List<String> esamiS, boolean NoEsamiP) throws DAOException, DBConnectionException {
 		
 		String query = "SELECT id_corso FROM esami_svolti WHERE usernameS = ? AND id_corsoP = ?";//prendo il codice del corso riferito ad un certo studente e ad un certo esame propedeutico  
 		String query1 = "SELECT * FROM esami_svolti where id_studente = ? AND idCorso = ?";
@@ -63,10 +63,10 @@ public class EsamiSvoltiDAO {
 			Connection conn = DBManager.getConnection();
 			
 			try {
-				
-				PreparedStatement statement = conn.prepareStatement(query);
+			  if(!NoEsamiP) {												//se non ci sono esami propedeutici salto il controllo												
+				PreparedStatement statement = conn.prepareStatement(query);		
 				statement.setString(1, username);
-				statement.setString(2, codiceEsame);
+				statement.setInt(2, codiceEsame);
 				ResultSet result = statement.executeQuery();
 				
 				if(result.next()) {
@@ -79,13 +79,14 @@ public class EsamiSvoltiDAO {
 						if(!res.next()) {
 							return false;
 						}
-						PreparedStatement stat2 = conn.prepareStatement(query);				//SERVE FARLO OGNI VOLTA?
-						stat2.setString(1, username);
-						stat2.setString(2, codiceEsame);
-						ResultSet res2 = statement.executeQuery();
 					}
+					PreparedStatement stat2 = conn.prepareStatement(query);				//SERVE FARLO OGNI VOLTA?
+					stat2.setString(1, username);
+					stat2.setInt(2, codiceEsame);
+					ResultSet res2 = statement.executeQuery();
 					
 				}
+			  }
 
 			}catch(SQLException e) {
 				

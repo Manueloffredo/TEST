@@ -79,8 +79,9 @@ public class GestoreSegreteria {
 			
 			corsiPropedeutici = EsamiSvoltiDAO.readEsamiSvolti(username);
 			
-			if(corsiPropedeutici == null)	NOesamiP = true;
-			
+			if(corsiPropedeutici == null)	NOesamiP = true;			//creo un flag per inserire direttamente gli esami 
+																		//qualora non fossero presenti propedeuticità
+			EsamiSvoltiDAO.updateEsamiSvolti(username, CodiceCorso , corsiPropedeutici, NOesamiP);
 			
 			
 		}catch(DBConnectionException dbEx) {
@@ -92,9 +93,8 @@ public class GestoreSegreteria {
 			throw new OperationException("Ops, qualcosa e' andato storto..");
 		}
 		
-		
 	}
-	//public static boolean updateEsamiSvolti(String username, String codiceEsame, List<String> esamiS) throws DAOException, DBConnectionException {
+	
 	
 }
 
