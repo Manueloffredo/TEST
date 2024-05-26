@@ -80,13 +80,13 @@ public class EsamiSvoltiDAO {
 							return false;
 						}
 					}
-					PreparedStatement stat2 = conn.prepareStatement(query);				//SERVE FARLO OGNI VOLTA?
-					stat2.setString(1, username);
-					stat2.setInt(2, codiceEsame);
-					ResultSet res2 = statement.executeQuery();
 					
 				}
 			  }
+			PreparedStatement stat2 = conn.prepareStatement(query2);				//SERVE FARLO OGNI VOLTA?
+			stat2.setString(1, username);
+			stat2.setInt(2, codiceEsame);
+			ResultSet res2 = stat2.executeQuery();
 
 			}catch(SQLException e) {
 				
