@@ -26,7 +26,7 @@ public class GestoreSegreteria {
 		
 		try {
 			
-			EntityStudente studente = StudenteDAO.readStudente(username, password);
+			EntityStudente studente = StudenteDAO.readStudente(Username, Password);
 			
 			if(Username.equals(studente.getUsername()) && Password.equals(studente.getPassword())){
 				
