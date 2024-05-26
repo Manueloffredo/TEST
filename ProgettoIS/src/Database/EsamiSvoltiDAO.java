@@ -51,10 +51,12 @@ public class EsamiSvoltiDAO {
 		
 	}
 	
-	public static boolean updateEsamiSvolti(String username, String codiceEsame, List<String> esamiS) throws DAOException, DBConnectionException {
+	public static boolean updateEsamiSvolti(String username, String codiceEsame
+											, List<String> esamiS) throws DAOException, DBConnectionException {
 		
 		String query = "SELECT id_corso FROM esami_svolti WHERE usernameS = ? AND id_corsoP = ?";//prendo il codice del corso riferito ad un certo studente e ad un certo esame propedeutico  
 		String query1 = "SELECT * FROM esami_svolti where id_studente = ? AND idCorso = ?";
+		String query2 = "INSERT INTO EsamiSvolti id_corso = ? , usernameS = ?";
 		
 		try {
 			
@@ -77,7 +79,12 @@ public class EsamiSvoltiDAO {
 						if(!res.next()) {
 							return false;
 						}
+						PreparedStatement stat2 = conn.prepareStatement(query);				//SERVE FARLO OGNI VOLTA?
+						stat2.setString(1, username);
+						stat2.setString(2, codiceEsame);
+						ResultSet res2 = statement.executeQuery();
 					}
+					
 				}
 
 			}catch(SQLException e) {

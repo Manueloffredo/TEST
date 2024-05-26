@@ -3,6 +3,7 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import Database.EsamiSvoltiDAO;
 import Database.StudenteDAO;
 import Entity.EntityStudente;
 import exception.DAOException;
@@ -47,9 +48,53 @@ public class GestoreSegreteria {
 		}
 		
 	}
-	//public static List<String> visualizzaEsamisvolti();
-	//public void inserisciEsami();
 	
+	public static List<String> visualizzaEsamisvolti(String username) throws OperationException{
+		
+		List<String> listaEsamiS = new ArrayList<String>();
+		
+		try {
+		
+			listaEsamiS = EsamiSvoltiDAO.readEsamiSvolti(username);
+			
+			if(listaEsamiS == null)		throw new OperationException("Nessun esame svolto dallo studente: "+ username);
+		}catch(DBConnectionException dbEx) {
+			
+			throw new OperationException("\nRiscontrato problema interno applicazione!\n");
+
+		}catch(DAOException ex) {
+
+			throw new OperationException("Ops, qualcosa e' andato storto..");
+		}
+		return listaEsamiS;
+		
+	}
+	
+	
+	public void inserisciEsami(int CodiceCorso, String username, List<String> esamiS ) throws OperationException {
+		
+		List<String> corsiPropedeutici = new ArrayList<String>();
+		boolean NOesamiP = false;
+		try {
+			
+			corsiPropedeutici = EsamiSvoltiDAO.readEsamiSvolti(username);
+			
+			if(corsiPropedeutici == null)	NOesamiP = true;
+			
+			
+			
+		}catch(DBConnectionException dbEx) {
+			
+			throw new OperationException("\nRiscontrato problema interno applicazione!\n");
+
+		}catch(DAOException ex) {
+
+			throw new OperationException("Ops, qualcosa e' andato storto..");
+		}
+		
+		
+	}
+	//public static boolean updateEsamiSvolti(String username, String codiceEsame, List<String> esamiS) throws DAOException, DBConnectionException {
 	
 }
 
