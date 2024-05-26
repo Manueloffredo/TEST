@@ -12,7 +12,7 @@ import exception.DBConnectionException;
 
 public class CorsiPropedeuticiDAO {
 	
-	public static List<String> readCorsiPropedeutici(String codice) throws DBConnectionException, DAOException{
+	public static List<String> readCorsiPropedeutici(int codiceCorso) throws DBConnectionException, DAOException{
 		
 		String query = "SELECT id_corsoP FROM corsi_propedeutici WHERE id_corso = ?"; 
 		List<String> listaEsamiP = new ArrayList<>();
@@ -24,7 +24,7 @@ public class CorsiPropedeuticiDAO {
 			try {
 				
 				PreparedStatement statement = conn.prepareStatement(query);
-				statement.setString(1, codice);
+				statement.setString(1, codiceCorso);
 				
 				ResultSet result = statement.executeQuery();			
 				

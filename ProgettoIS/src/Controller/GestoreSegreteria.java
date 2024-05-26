@@ -3,6 +3,7 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import Database.CorsiPropedeuticiDAO;
 import Database.EsamiSvoltiDAO;
 import Database.StudenteDAO;
 import Entity.EntityStudente;
@@ -77,7 +78,7 @@ public class GestoreSegreteria {
 		boolean NOesamiP = false;
 		try {
 			
-			corsiPropedeutici = EsamiSvoltiDAO.readEsamiSvolti(username);
+			corsiPropedeutici = CorsiPropedeuticiDAO.readCorsiPropedeutici(CodiceCorso);
 			
 			if(corsiPropedeutici == null)	NOesamiP = true;			//creo un flag per inserire direttamente gli esami 
 																		//qualora non fossero presenti propedeuticità

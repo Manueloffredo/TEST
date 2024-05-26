@@ -79,15 +79,18 @@ public class EsamiSvoltiDAO {
 						if(!res.next()) {
 							return false;
 						}
+						
 					}
 					
 				}
 			  }
-			PreparedStatement stat2 = conn.prepareStatement(query2);				//SERVE FARLO OGNI VOLTA?
-			stat2.setString(1, username);
-			stat2.setInt(2, codiceEsame);
-			ResultSet res2 = stat2.executeQuery();
-
+			  else{
+			    PreparedStatement stat2 = conn.prepareStatement(query2);				//SERVE FARLO OGNI VOLTA?
+				stat2.setString(1, username);
+				stat2.setInt(2, codiceEsame);
+				ResultSet res2 = stat2.executeQuery();
+				return true; 
+			  }
 			}catch(SQLException e) {
 				
 				throw new DAOException("Nessun esame svolto");
@@ -102,7 +105,7 @@ public class EsamiSvoltiDAO {
 			throw new DBConnectionException("Connessione al Database non riuscita");
 
 		}
-		return true;
+	
 		
 	}
 }
