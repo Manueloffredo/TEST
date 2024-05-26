@@ -16,7 +16,7 @@ public class EsamiSvoltiDAO {
 	
 	public static List<String> readEsamiSvolti(String username) throws DAOException, DBConnectionException{
 		
-		String query = "SELECT lista_esami_svolti FROM Studente WHERE username = ?"; 
+		String query = "SELECT lista_esami_svolti FROM Studente WHERE username = ?";//Prendo la lista esami svolti di un certo studente
 		List<String> esamiS = new ArrayList<String>();
 		try {
 			
@@ -53,8 +53,8 @@ public class EsamiSvoltiDAO {
 	
 	public static boolean updateEsamiSvolti(String username, String codiceEsame, List<String> esamiS) throws DAOException, DBConnectionException {
 		
-		String query = "SELECT id_corso FROM esami_svolti WHERE usernameS = ? AND id_corsoP = ?"; 
-		String query1 = "SELECT * FROM esami_svolti where id_studente = ? AND idCorso = ?"; 
+		String query = "SELECT id_corso FROM esami_svolti WHERE usernameS = ? AND id_corsoP = ?";//prendo il codice del corso riferito ad un certo studente e ad un certo esame propedeutico  
+		String query1 = "SELECT * FROM esami_svolti where id_studente = ? AND idCorso = ?";
 		
 		try {
 			
