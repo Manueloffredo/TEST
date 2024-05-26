@@ -51,8 +51,8 @@ public class EsamiSvoltiDAO {
 		
 	}
 	
-	public static boolean updateEsamiSvolti(String username, int codiceEsame
-											, List<String> esamiS, boolean NoEsamiP) throws DAOException, DBConnectionException {
+	public static boolean updateEsamiSvolti(String username, int codiceEsame,
+											 List<String> esamiS, boolean NoEsamiP) throws DAOException, DBConnectionException {
 		
 		String query = "SELECT id_corso FROM esami_svolti WHERE usernameS = ? AND id_corsoP = ?";//prendo il codice del corso riferito ad un certo studente e ad un certo esame propedeutico  
 		String query1 = "SELECT * FROM esami_svolti where id_studente = ? AND idCorso = ?";
@@ -79,9 +79,7 @@ public class EsamiSvoltiDAO {
 						if(!res.next()) {
 							return false;
 						}
-						
 					}
-					
 				}
 			  }
 			  else{
