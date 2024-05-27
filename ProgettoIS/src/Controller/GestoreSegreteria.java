@@ -28,7 +28,7 @@ public class GestoreSegreteria {
 	}
 	
 	public boolean login(String Username, String Password) throws OperationException {
-		
+
 		try {
 			
 			EntityStudente studente = StudenteDAO.readStudente(Username, Password);

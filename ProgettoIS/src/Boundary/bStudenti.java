@@ -1,5 +1,7 @@
 package Boundary;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import Controller.GestoreSegreteria;
@@ -62,6 +64,33 @@ public class bStudenti {
 	}
 	
 	public static void visualizzaEsamiSvolti() {
+		
 		GestoreSegreteria gestoreSegreteria = GestoreSegreteria.getIstance();
+		
+		boolean valido = false;
+		String usernameS = null;
+		System.out.println("\n--------Visualizza Esami--------\n");
+		while(!valido) {
+			try {
+				System.out.println("\nInserisci l'username: ");
+				usernameS = scan.nextLine();
+				
+				if(usernameS.length() > MAX_LENGHT) {
+					System.out.println("\nInput non valido, riprovare... ");
+				}
+				else {
+					valido = true;
+				}	
+			}catch(IllegalArgumentException e) {
+				 System.out.println("\nUsername non valido, riprovare...");
+			}
+		}
+		try {
+			 gestoreSegreteria.visualizzaEsamisvolti(usernameS);
+		} catch (OperationException e) {
+			e.printStackTrace();
+		}
+		
+		 
 	}
 }
