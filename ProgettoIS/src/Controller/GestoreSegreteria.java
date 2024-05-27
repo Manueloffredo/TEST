@@ -53,7 +53,7 @@ public class GestoreSegreteria {
 		
 	}
 	
-	public static List<String> visualizzaEsamisvolti(String username) throws OperationException{
+	public List<String> visualizzaEsamisvolti(String username) throws OperationException{
 		
 		List<String> listaEsamiS = new ArrayList<String>();
 		

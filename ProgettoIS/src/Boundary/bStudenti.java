@@ -63,9 +63,11 @@ public class bStudenti {
 		}
 	}
 	
-	public static void visualizzaEsamiSvolti() {
+	public static void visualizzaEsamiSvolti() throws OperationException {
 		
 		GestoreSegreteria gestoreSegreteria = GestoreSegreteria.getIstance();
+		
+		List<String> esamiSvolti = new ArrayList<>();
 		
 		boolean valido = false;
 		String usernameS = null;
@@ -85,12 +87,24 @@ public class bStudenti {
 				 System.out.println("\nUsername non valido, riprovare...");
 			}
 		}
+		
 		try {
-			 gestoreSegreteria.visualizzaEsamisvolti(usernameS);
-		} catch (OperationException e) {
-			e.printStackTrace();
+			
+			esamiSvolti = gestoreSegreteria.visualizzaEsamisvolti(usernameS);
+			
+			if (esamiSvolti.isEmpty()) {
+                throw new OperationException("Nessun esame svolto dallo studente: " + usernameS);
+            }
+			else {
+		 		System.out.println("Esami svolti per l'username " + usernameS + ":\n");
+		 		
+		 		for (String esame : esamiSvolti) {
+		 			System.out.println("- " + esame);
+		 		}
+		 	}
+		}catch (OperationException e) {
+			 System.out.println("\nQualcosa e' andato storto, riprovare...");
 		}
 		
-		 
 	}
 }
