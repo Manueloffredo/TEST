@@ -1,6 +1,6 @@
 package Controller;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,7 +75,7 @@ public class GestoreSegreteria {
 	}
 
 	
-	public void inserisciEsami(int CodiceCorso, String username, List<String> esamiS, int Valutazione, boolean lode,
+	public void inserisciEsami(int CodiceCorso, String username, int Valutazione, boolean lode,
 											String note_docente, Date data) throws OperationException {
 		
 		List<String> corsiPropedeutici = new ArrayList<String>();

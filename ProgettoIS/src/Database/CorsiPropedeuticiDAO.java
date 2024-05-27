@@ -24,7 +24,7 @@ public class CorsiPropedeuticiDAO {
 			try {
 				
 				PreparedStatement statement = conn.prepareStatement(query);
-				statement.setString(1, codiceCorso);
+				statement.setLong(1, codiceCorso);
 				
 				ResultSet result = statement.executeQuery();			
 				
