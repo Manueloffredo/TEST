@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import exception.OperationException;
 
-public class bMain {
+public class Main {
 
 	public static void main(String [] argc) throws OperationException {
 		
