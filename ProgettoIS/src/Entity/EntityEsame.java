@@ -17,7 +17,9 @@ public class EntityEsame {
 		    this.Data = Data;
 		    }
 
-		    // Getters
+
+
+			// Getters
 		    public int getValutazione() {
 		        return Valutazione;
 		    }

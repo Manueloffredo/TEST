@@ -8,7 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import Entity.EntityEsame;
+import Entity.EntityStudente;
 import exception.DAOException;
 import exception.DBConnectionException;
 
@@ -57,7 +58,7 @@ public class EsamiSvoltiDAO {
 		String query = "SELECT id_corso FROM esami_svolti WHERE usernameS = ? AND id_corsoP = ?";//prendo il codice del corso riferito ad un certo studente e ad un certo esame propedeutico  
 		String query1 = "SELECT * FROM esami_svolti where id_studente = ? AND idCorso = ?";
 		String query2 = "INSERT INTO EsamiSvolti id_corso = ? , usernameS = ?";
-		
+
 		try {
 			
 			Connection conn = DBManager.getConnection();
@@ -83,10 +84,10 @@ public class EsamiSvoltiDAO {
 				}
 			  }
 			  else{
-			    PreparedStatement stat2 = conn.prepareStatement(query2);				//SERVE FARLO OGNI VOLTA?
+			    PreparedStatement stat2 = conn.prepareStatement(query2);			
 				stat2.setString(1, username);
 				stat2.setInt(2, codiceEsame);
-				ResultSet res2 = stat2.executeQuery();
+				stat2.executeQuery();
 			  }
 			}catch(SQLException e) {
 				
