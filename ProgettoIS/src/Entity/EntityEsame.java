@@ -6,20 +6,20 @@ public class EntityEsame {
 		private int Valutazione;
 		private Boolean Lode;
 		private String Note_Docente;
+		private int codiceEsame;
+		private String UsernameS;
 		private Date Data;
 		
-	
-		public EntityEsame(int Valutazione, boolean Lode, String Note_Docente, Date Data) {
+		public EntityEsame(int Valutazione, boolean Lode, String Note_Docente, Date Data, int codiceEsame, String UsernameS) {
 		    super();
 			this.Valutazione = Valutazione;
 		    this.Lode = Lode;
 		    this.Note_Docente =Note_Docente;
 		    this.Data = Data;
+		    this.codiceEsame = codiceEsame;
+		    this.UsernameS = UsernameS;
 		    }
 
-
-
-			// Getters
 		    public int getValutazione() {
 		        return Valutazione;
 		    }
@@ -36,8 +36,25 @@ public class EntityEsame {
 		        return Data;
 		    }
 
-		    // Setters
-		    public void setValutazione(int Valutazione) {
+		    public int getCodiceEsame() {
+				return codiceEsame;
+			}
+
+
+
+			public String getUsernameS() {
+				return UsernameS;
+			}
+			
+			public void setCodiceEsame(int codiceEsame) {
+				this.codiceEsame = codiceEsame;
+			}
+
+			public void setUsernameS(String usernameS) {
+				UsernameS = usernameS;
+			}
+
+			public void setValutazione(int Valutazione) {
 		        this.Valutazione = Valutazione;
 		    }
 

@@ -1,7 +1,10 @@
 package Controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.crypto.Data;
 
 import Database.CorsiPropedeuticiDAO;
 import Database.EsamiSvoltiDAO;
@@ -70,9 +73,10 @@ public class GestoreSegreteria {
 		return listaEsamiS;
 		
 	}
+
 	
-	
-	public void inserisciEsami(int CodiceCorso, String username, List<String> esamiS ) throws OperationException {
+	public void inserisciEsami(int CodiceCorso, String username, List<String> esamiS, int Valutazione, boolean lode,
+											String note_docente, Date data) throws OperationException {
 		
 		List<String> corsiPropedeutici = new ArrayList<String>();
 		boolean NOesamiP = false;
@@ -82,8 +86,7 @@ public class GestoreSegreteria {
 			
 			if(corsiPropedeutici == null)	NOesamiP = true;			//creo un flag per inserire direttamente gli esami 
 																		//qualora non fossero presenti propedeuticità
-			EsamiSvoltiDAO.updateEsamiSvolti(username, CodiceCorso , corsiPropedeutici, NOesamiP);
-			
+			EsamiSvoltiDAO.updateEsamiSvolti(CodiceCorso, username, corsiPropedeutici, Valutazione, lode, note_docente, data, NOesamiP);
 			
 		}catch(DBConnectionException dbEx) {
 			
